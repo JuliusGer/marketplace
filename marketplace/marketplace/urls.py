@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from catalog.views import index, contact
+# from catalog.views import index, contact
 
 # на проде так делать нельзя, следующие строки нужны для отображения изображений
 # с + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) аналогично
@@ -23,8 +23,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', index, name='index'),
+    # path('', index, name='index'), комментим после добавления пути в catalog/urls.py
+    path('', include('catalog.urls')), # добавили после добавления пути в catalog/urls.py
     path('item/', include('item.urls')),
     path('admin/', admin.site.urls),
-    path('contact/', contact, name='contact'),
+    # path('contact/', contact, name='contact'), комментим после добавления пути в catalog/urls.py
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
