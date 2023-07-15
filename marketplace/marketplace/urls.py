@@ -28,4 +28,4 @@ urlpatterns = [
     path('item/', include('item.urls')),
     path('admin/', admin.site.urls),
     # path('contact/', contact, name='contact'), комментим после добавления пути в catalog/urls.py
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
